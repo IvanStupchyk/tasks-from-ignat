@@ -1,0 +1,4 @@
+.span_style:hover {
+    cursor: pointer;
+    opacity: .7;
+}
