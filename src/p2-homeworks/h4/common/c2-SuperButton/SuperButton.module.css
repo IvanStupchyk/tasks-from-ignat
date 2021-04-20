@@ -17,6 +17,7 @@
 .btn:hover {
     opacity: .8;
     color: #fff;
+    cursor: pointer;
 }
 
 .red {
