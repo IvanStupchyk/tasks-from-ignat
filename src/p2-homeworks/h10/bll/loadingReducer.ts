@@ -1,14 +1,27 @@
+type initStateType = {
+    isFetching: boolean
+}
+
 const initState = {
+    isFetching: false
+}
 
-};
-
-export const loadingReducer = (state = initState, action: any): any => { // fix any
+export const loadingReducer = (state: initStateType = initState, action: loadingType): initStateType => {
     switch (action.type) {
-        case "": {
-            return state;
+        case 'TOGGLE-IS-FETCHING': {
+            return {...state, isFetching: action.isFetching}
         }
-        default: return state;
+        default: return state
     }
-};
+}
 
-export const loadingAC = (): any => {}; // fix any
+export type loadingType = {
+    type: 'TOGGLE-IS-FETCHING'
+    isFetching: boolean
+}
+export const loadingAC = (isFetching: boolean): loadingType => {
+    return {
+        type: 'TOGGLE-IS-FETCHING',
+        isFetching
+    }
+}
