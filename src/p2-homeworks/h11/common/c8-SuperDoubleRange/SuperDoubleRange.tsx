@@ -1,24 +1,43 @@
-import React from "react";
+import React, {ChangeEvent} from 'react'
+import {Slider} from "@material-ui/core";
 
-type SuperDoubleRangePropsType = {
-    onChangeRange?: (value: [number, number]) => void
-    value?: [number, number]
-    // min, max, step, disable, ...
+// type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+
+type SuperDoubleRangePropsType =  {
+    onChangeRange: (value: number[]) => void
+    value: [number, number]
+    min: number
+    max: number
+    step: number
+    disabled: boolean
 }
 
 const SuperDoubleRange: React.FC<SuperDoubleRangePropsType> = (
     {
         onChangeRange, value,
-        // min, max, step, disable, ...
+        min, max, step, disabled,
+        ...restProps
     }
 ) => {
-    // сделать самому, можно подключать библиотеки
+
+    const handleChange = (event: ChangeEvent<{}>, newValue: number | number[]) => {
+        onChangeRange && onChangeRange(newValue as number[]);
+    };
 
     return (
         <>
-            DoubleRange
+            <Slider
+                value={value}
+                onChange={handleChange}
+                min={min}
+                max={max}
+                step={step}
+                disabled={disabled}
+                style={{width: '120px'}}
+                {...restProps}
+            />
         </>
-    );
+    )
 }
 
-export default SuperDoubleRange;
+export default SuperDoubleRange
