@@ -1,14 +1,18 @@
 import React, {ChangeEvent, useState} from "react";
 import {RequestAPI} from "./RequestsAPI";
+import s from "../../h3/Greeting.module.css";
 
 export const Request = () => {
-    const [state, setState] = useState<any>(null)
+    const [state, setState] = useState<any>()
     const [checkboxValue, setCheckboxValue] = useState<boolean>(false)
 
     const addValue = () => {
         RequestAPI.addValueCheckbox(checkboxValue)
             .then(res => {
                 setState(res.data)
+            })
+            .catch(error => {
+                setState(error.message)
             })
     }
 
@@ -17,11 +21,15 @@ export const Request = () => {
     }
 
     return (
-        <div>
-            <button onClick={addValue}>+</button>
-            <input type={'checkbox'} checked={checkboxValue} onChange={changeCheckboxValue}/>
+        <div style={{padding: '20px'}}>
+            <div style={{display: 'flex', alignItems: 'center'}}>
+                <button onClick={addValue} className={s.btnAdd}>Send inquiry</button>
+                <label className={s.checkboxHW13}>
+                    <input type={'checkbox'} checked={checkboxValue} onChange={changeCheckboxValue}/>
+                    <span/>
+                </label>
+            </div>
             {JSON.stringify(state)}
-            {JSON.stringify(checkboxValue)}
         </div>
     )
 }

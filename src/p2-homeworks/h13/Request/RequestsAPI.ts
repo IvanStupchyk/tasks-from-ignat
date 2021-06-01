@@ -4,6 +4,6 @@ const instance = axios.create()
 
 export const RequestAPI = {
     addValueCheckbox(checkboxValue: boolean) {
-        return instance.post('https://neko-cafe-back.herokuapp.com/auth/test', {success: true})
+        return instance.post('https://neko-cafe-back.herokuapp.com/auth/test', {success: checkboxValue})
     }
 }

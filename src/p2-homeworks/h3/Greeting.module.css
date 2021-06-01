@@ -51,10 +51,10 @@
 
 .btnAdd {
     margin-right: 20px;
-    padding: 2px;
+    padding: 5px;
     box-sizing: border-box;
     height: 40px;
-    width: 50px;
+    min-width: 50px;
     border-radius: 3px;
     border: none;
     outline: none;
@@ -65,3 +65,56 @@
 .btnAdd:hover {
     color: #fff;
 }
+
+
+.checkboxHW13 {
+    position: relative;
+    display: flex;
+    cursor: pointer;
+}
+
+.checkboxHW13 input {
+    position: absolute;
+    z-index: -20;
+    opacity: 0;
+}
+
+.checkboxHW13 input:checked + span:after {
+    background-color: green;
+}
+
+.checkboxHW13 input:checked + span:before {
+    left: 22px;
+}
+
+
+.checkboxHW13 span:after {
+    content: "";
+    display: block;
+    position: relative;
+    width: 50px;
+    height: 30px;
+    background-color: red;
+    border-radius: 15px;
+    top: 0;
+    transform: translateY(-50%);
+    left: 0;
+    transition: .5s;
+}
+
+.checkboxHW13 span:before {
+    content: "";
+    display: block;
+    position: relative;
+    z-index: 10;
+    width: 26px;
+    height: 26px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    top: 46%;
+    transform: translateY(-50%);
+    left: 2px;
+    transition: .5s;
+}
+
+
